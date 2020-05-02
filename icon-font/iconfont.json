@@ -1,0 +1,37 @@
+{
+  "id": "1525209",
+  "name": "music-app",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "908789",
+      "name": "浏览记录-b",
+      "font_class": "liulanjilub",
+      "unicode": "e6cd",
+      "unicode_decimal": 59085
+    },
+    {
+      "icon_id": "1100385",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "5618760",
+      "name": "歌单",
+      "font_class": "gedan",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "11391498",
+      "name": "歌单",
+      "font_class": "gedan1",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    }
+  ]
+}

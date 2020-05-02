@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music App</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="icon-font/iconfont.css">
+</head>
+<body>
+    <div id="notification"></div>
+    <div id="player-min" draggable="true" onclick="hidePlayer()">
+         <img class="album-img-min" src="./img/singer.jpg" alt="">
+    </div>
+
+    <!-- player max size -->
+    <div id="player-max">
+        <header class="header">
+            <img id="header-background-img" alt="">
+            <div onclick="hidePlayer()" class="header-left left">
+                <img class="arrow-back" src="./img/arrow-back.svg" alt="">
+                <span><strong id="currentPageName"></strong></span>
+            </div>
+            <div class="header-right right">
+                <a href="#" class="avatar">
+                    <img class="avatar-img" src="./img/avatar.svg" alt="">
+                </a>
+            </div>
+        </header>
+        <div class="main">
+            <div class="album" style="margin-top: 20px">
+                <img class="album-img" alt="">
+                <div class="content">
+                    <h3 class="playing" style="margin-bottom: 10px">Now Playing</h3>
+                    <h3 id="nameAndSinger" style="margin-bottom: 10px"></h3>
+                    <p id="album" style="margin-bottom: 10px"></p>
+                </div>
+                <div class="control">
+                    <div class="progress-bar">
+                        <div class="bar-control"></div>
+                    </div>
+                    <div class="timeline">
+                        <div class="left" id="currentTime">0:00</div>
+                        <div class="right" id="duration">0.00</div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="model">
+                        <div class="left">
+                            <img class="random"  onclick="changeMode('random')"  src="./img/random.svg" alt="">
+                        </div>
+                        <div class="right">
+                            <img class="loop"  onclick="changeMode('loop')" src="./img/loop.svg" alt="">  
+                        </div>                  
+                    </div>
+                    <div class="clear"></div>
+                    <div class="main-control">
+                        <div class="main-left">
+                            <img onclick="prev()" src="./img/pre.svg" alt="">
+                        </div>
+                        <div class="main-mid">
+                            <img id="playBtnImg" onclick="playSong()" src="./img/play.svg" alt="">
+                        </div>
+                        <div class="main-right">
+                            <img onclick="next()" src="./img/next.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+    <!-- pages container -->
+    <div id="pages">
+        <!-- playlist -->
+        <div class="page" id="playlist">
+            <header class="header">
+                <div class="header-left left">
+                    <h2 class="title">Playlist</h2>
+                </div>
+                <div class="header-right right">
+                    <a href="#" class="avatar">
+                        <img class="avatar-img" src="./img/avatar.svg" alt="">
+                    </a>
+                </div>
+            </header>
+            <div class="main">
+                <div class="songlist" id="playlist-list">
+                </div>
+            </div>                       
+        </div>
+        <div class="page" id="search">
+            <header class="header">
+                <div class="header-left left">
+                    <h2 class="title">Playlist</h2>
+                </div>
+                <div class="header-right left">
+                    <a href="#" class="avatar">
+                        <img class="avatar-img" src="./img/avatar.svg" alt="">
+                    </a>
+                </div>
+            </header>
+            <div class="main">
+                <div class="songlist">
+                    <div class="song">
+                        <div class="left">
+                            <h3 class="song-name">
+                                Faded
+                            </h3>
+                            <p class="singer-name">Alan Walker</p>                            
+                        </div>
+                        <div class="right">
+                            <img class="song-control" src="./img/pause.svg" alt="">
+                        </div>                        
+                    </div>
+                    
+                    <div class="song">
+                        <div class="left">
+                            <h3 class="song-name">
+                                Faded
+                            </h3>
+                            <p class="singer-name">Alan Walker</p>                            
+                        </div>
+                        <div class="right">
+                            <img class="song-control" src="./img/pause.svg" alt="">
+                        </div>                
+                    </div>                                                                                          
+                </div>
+            </div>          
+        </div>
+        <!-- all tracks -->
+        <div class="page" id="allTracks">
+            <header class="header">
+                <div class="header-left" style="float: left;">
+                    <h2 class="title">All Tracks</h2>
+                </div>
+                <div class="header-right" style="float: right;">
+                    <a href="#" class="avatar">
+                        <img class="avatar-img" src="./img/avatar.svg" alt="">
+                    </a>
+                </div>
+            </header>
+            <div class="main">
+                <div class="songlist" id='allTracksList'></div>
+            </div>             
+        </div> 
+        <!-- Browse -->
+        <div class="page" id="browse">
+            <header class="header">
+                <div class="header-left" style="float: left;">
+                    <h2 class="title">Browse</h2>
+                </div>
+                <div class="header-right" style="float: right;">
+                    <a href="#" class="avatar">
+                        <img class="avatar-img" src="./img/avatar.svg" alt="">
+                    </a>
+                </div>
+            </header>
+            <div class="main">
+                <div class="browse-input-wrapper">
+                    <input class="browse-input" type="text" placeholder="search..."> <button class="browse-search-btn" onclick="loadData()">Search</button>                                  
+                </div>
+                <div class="songlist" id="dataList"></div>
+            </div>             
+        </div>         
+    </div>
+
+
+    <footer class="footer">
+    	<div class="footer-nav-box">
+             <a href="javascript:void(0)" onclick="showCurrentPage('browse')" class="footer-nav">
+                <i class="iconfont icon-liulanjilub"></i>
+                <p>Browse</p>
+            </a>   
+        </div>
+        <div class="footer-nav-box">
+             <a href="javascript:void(0)" class="footer-nav" onclick="showCurrentPage('allTracks')">
+                <i class="iconfont icon-gedan"></i>
+                <p>All Tracks</p>
+            </a>   
+        </div>
+        <div class="footer-nav-box">
+             <a href="javascript:void(0)" class="footer-nav" style="color:white" onclick="showCurrentPage('playlist')">
+                <i class="iconfont icon-gedan1"></i>
+                <p>Playlist</p>
+            </a>   
+        </div>
+        <div class="footer-nav-box">
+             <a href="javascript:void(0)" class="footer-nav" onclick="showCurrentPage('playlist')">
+                <i class="iconfont icon-sousuo"></i>
+                <p>Search</p>
+            </a>   
+        </div>                        
+    </footer>
+
+    <!-- core player -->
+    <audio controls="none" hidden id="player">
+    </audio>
+    <script src="app.js"></script>
+    <script src='player.js'></script>
+    <script src='loadData.js'></script>
+    <script src='allTracks.js'></script>
+    <script src='playlist.js'></script>
+</body>
+</html>
