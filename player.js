@@ -116,7 +116,7 @@ function prev() {
 	player.src = allTracks[currentIndex].url;
 	playSong()
 }
-
+var timer = null;
 function changeMode(playMode) {
 	let notice = getId('notification');
 	if(currentPlayMode === playMode) {
@@ -126,7 +126,8 @@ function changeMode(playMode) {
 	}
 	notice.innerText = `Play Mode: ${currentPlayMode}`;
 	notice.style.top = '0';
-	setTimeout(function() {
+	clearTimeout(timer);
+	timer = setTimeout(function() {
 		notice.style.top = '-45px';
 	},1000)
 }

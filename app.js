@@ -38,7 +38,7 @@ var allTracks = [
 	{
 		img:'./img/songsImg/cherry.jpg',
 		url:'./songs/song4.mp3',
-		name:'Cheery blossom time',
+		name:'Cherry blossom time',
 		singer:'Kotaro Oshio',
 		album:'Unknown',
 		duration:'3:39'
