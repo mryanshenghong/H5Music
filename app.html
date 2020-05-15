@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="notification"></div>
-    <div id="player-min" draggable="true" onclick="hidePlayer()">
+    <div id="player-min" draggable="true" ondragend="movePlayer(event)" onclick="hidePlayer()">
          <img class="album-img-min" src="./img/singer.jpg" alt="">
     </div>
 
@@ -37,8 +37,8 @@
                     <p id="album" style="margin-bottom: 10px"></p>
                 </div>
                 <div class="control">
-                    <div class="progress-bar">
-                        <div class="bar-control"></div>
+                    <div class="progress-bar" onclick="clickBar(event)">
+                        <div class="bar-control" onclick="stop(event)"></div>
                     </div>
                     <div class="timeline">
                         <div class="left" id="currentTime">0:00</div>

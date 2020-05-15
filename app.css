@@ -55,7 +55,7 @@ h1,h2,h3,h4,h5,h6,p{
 	position: absolute;
 	width: 30px;
 	height: 30px;
-	z-index: 1000;
+	z-index: 1002;
 	right: 50px;
 	bottom: 130px;
 }

@@ -21,7 +21,6 @@ function hidePlayer() {
 	}
 }
 
-
 function playSong(index) {
 	if(index === undefined || index === currentIndex) {
 		isStop ? player.play() : player.pause()
@@ -68,7 +67,6 @@ function playState(flag) {
 		getId('playBtnImg').src = './img/play.svg'
 	}
 }
-
 function generateSongInfo() {
 	getId('header-background-img').src = allTracks[currentIndex].img;
 	getClass('album-img').src = allTracks[currentIndex].img;
@@ -76,7 +74,6 @@ function generateSongInfo() {
 	getId('nameAndSinger').innerText = allTracks[currentIndex].name + '-' + allTracks[currentIndex].singer;
 	getId('album').innerText = allTracks[currentIndex].album;
 }
-
 
 function next() {
 	playState(false);
@@ -101,7 +98,6 @@ function generateRandomIndex(currentIndex) {
 		return newIndex;
 	}
 }
-
 function prev() {
 	playState(false);
 	if(currentPlayMode==='normal'){
@@ -117,6 +113,7 @@ function prev() {
 	playSong()
 }
 var timer = null;
+
 function changeMode(playMode) {
 	let notice = getId('notification');
 	if(currentPlayMode === playMode) {
@@ -130,4 +127,41 @@ function changeMode(playMode) {
 	timer = setTimeout(function() {
 		notice.style.top = '-45px';
 	},1000)
+}
+
+function movePlayer (e) {
+	console.log(e)
+	const playerMini = getId('player-min');
+	let top = 0;
+	let left = 0;
+	if(e.clientX >= document.body.clientWidth - 50) {
+		left = document.body.clientWidth - 50;
+	}else if(e.clientX <= 0) {
+		left = 0;
+	}else {
+		left = playerMini.offsetLeft + e.layerX ;
+	}
+	
+	if(e.clientY > document.body.clientHeight - 50) {
+		top = document.body.clientHeight - 50
+	}else if (e.clientY <= 0) {
+		top = 0;
+	}else {
+		top = playerMini.offsetTop + e.layerY 
+	}
+	playerMini.style.top =  top +  'px';
+	playerMini.style.left = left + 'px'
+}
+
+function stop(e) {
+	e.cancelBubble = true
+}
+function clickBar(e) {
+	getClass('bar-control').style.left = e.layerX + 'px'
+	var duration = player.duration
+	let percentage = e.layerX / e.path[0].clientWidth
+	var current_m = parseInt(percentage * duration / 60);
+	var current_s = parseInt(percentage * duration % 60);
+	document.getElementById('currentTime').innerText = current_m + ':' + ((current_s < 10) ? '0' + current_s : current_s);
+	player.currentTime = percentage * duration
 }
