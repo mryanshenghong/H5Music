@@ -23,8 +23,8 @@
           <span><strong id="currentPageName"></strong></span>
         </div>
         <div class="header-right right">
-          <a href="#" class="avatar">
-            <img class="avatar-img" src="./img/avatar.svg" alt="" />
+          <a href="#" class="avatar" onclick="showCurrentPage('avatar')">
+            <img class="avatar-img" src="./img/avatar.jpg" alt="" />
           </a>
         </div>
       </header>
@@ -80,7 +80,7 @@
           </div>
           <div class="header-right right">
             <a href="#" class="avatar" onclick="showCurrentPage('avatar')">
-              <img class="avatar-img" src="./img/avatar.svg" alt="" />
+              <img class="avatar-img" src="./img/avatar.jpg" alt="" />
             </a>
           </div>
         </header>
@@ -88,44 +88,19 @@
           <div class="songlist" id="playlist-list"></div>
         </div>
       </div>
+      <!-- Avatar -->
       <div class="page" id="avatar">
         <header class="header">
           <div class="header-left left">
-            <h2 class="title">Playlist</h2>
+            <h2 class="title">Avatar</h2>
           </div>
           <div class="header-right right">
             <a href="#" class="avatar">
-              <img class="avatar-img" src="./img/avatar.svg" alt="" />
+              <img class="avatar-img" src="./img/avatar.jpg" alt="" />
             </a>
           </div>
         </header>
-        <div class="main">
-          <div class="songlist">
-            <div class="song">
-              <div class="left">
-                <h3 class="song-name">
-                  Faded
-                </h3>
-                <p class="singer-name">Alan Walker</p>
-              </div>
-              <div class="right">
-                <img class="song-control" src="./img/pause.svg" alt="" />
-              </div>
-            </div>
-
-            <div class="song">
-              <div class="left">
-                <h3 class="song-name">
-                  Faded
-                </h3>
-                <p class="singer-name">Alan Walker</p>
-              </div>
-              <div class="right">
-                <img class="song-control" src="./img/pause.svg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="main" id="avatar-wrapper"></div>
       </div>
       <!-- all tracks -->
       <div class="page" id="allTracks">
@@ -135,7 +110,7 @@
           </div>
           <div class="header-right" style="float: right;">
             <a href="#" class="avatar" onclick="showCurrentPage('avatar')">
-              <img class="avatar-img" src="./img/avatar.svg" alt="" />
+              <img class="avatar-img" src="./img/avatar.jpg" alt="" />
             </a>
           </div>
         </header>
@@ -151,7 +126,7 @@
           </div>
           <div class="header-right" style="float: right;">
             <a href="#" class="avatar" onclick="showCurrentPage('avatar')">
-              <img class="avatar-img" src="./img/avatar.svg" alt="" />
+              <img class="avatar-img" src="./img/avatar.jpg" alt="" />
             </a>
           </div>
         </header>
@@ -193,5 +168,6 @@
     <script src="loadData.js"></script>
     <script src="allTracks.js"></script>
     <script src="playlist.js"></script>
+    <script src="avatar.js"></script>
   </body>
 </html>

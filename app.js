@@ -10,6 +10,9 @@ var player = document.getElementById('player')
 var isStop = true
 // music list
 var currentIndex = 0
+
+var isUserNameInputShow = false
+
 var allTracks = [
   {
     img: './img/songsImg/faded.jpg',
@@ -88,4 +91,15 @@ function getClass(className) {
 
 function getId(idName) {
   return document.getElementById(idName)
+}
+
+function showUserInput() {
+  isUserNameInputShow = true
+  renderAvatar()
+}
+
+function userNameChange(e) {
+  localStorage.setItem('username', e.target.value)
+  isUserNameInputShow = false
+  renderAvatar()
 }
