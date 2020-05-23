@@ -38,7 +38,7 @@
           </div>
           <div class="control">
             <div class="progress-bar" onclick="clickBar(event)">
-              <div class="bar-control" onclick="stop(event)"></div>
+              <div class="bar-control" draggable="true" ondragend="moveProgressBar(event)" onclick="stop(event)"></div>
             </div>
             <div class="timeline">
               <div class="left" id="currentTime">0:00</div>
@@ -79,7 +79,7 @@
             <h2 class="title">Playlist</h2>
           </div>
           <div class="header-right right">
-            <a href="#" class="avatar">
+            <a href="#" class="avatar" onclick="showCurrentPage('avatar')">
               <img class="avatar-img" src="./img/avatar.svg" alt="" />
             </a>
           </div>
@@ -88,12 +88,12 @@
           <div class="songlist" id="playlist-list"></div>
         </div>
       </div>
-      <div class="page" id="search">
+      <div class="page" id="avatar">
         <header class="header">
           <div class="header-left left">
             <h2 class="title">Playlist</h2>
           </div>
-          <div class="header-right left">
+          <div class="header-right right">
             <a href="#" class="avatar">
               <img class="avatar-img" src="./img/avatar.svg" alt="" />
             </a>
@@ -134,7 +134,7 @@
             <h2 class="title">All Tracks</h2>
           </div>
           <div class="header-right" style="float: right;">
-            <a href="#" class="avatar">
+            <a href="#" class="avatar" onclick="showCurrentPage('avatar')">
               <img class="avatar-img" src="./img/avatar.svg" alt="" />
             </a>
           </div>
@@ -150,7 +150,7 @@
             <h2 class="title">Browse</h2>
           </div>
           <div class="header-right" style="float: right;">
-            <a href="#" class="avatar">
+            <a href="#" class="avatar" onclick="showCurrentPage('avatar')">
               <img class="avatar-img" src="./img/avatar.svg" alt="" />
             </a>
           </div>
@@ -182,12 +182,6 @@
         <a href="javascript:void(0)" class="footer-nav" style="color: white;" onclick="showCurrentPage('playlist')">
           <i class="iconfont icon-gedan1"></i>
           <p>Playlist</p>
-        </a>
-      </div>
-      <div class="footer-nav-box">
-        <a href="javascript:void(0)" class="footer-nav" onclick="showCurrentPage('playlist')">
-          <i class="iconfont icon-sousuo"></i>
-          <p>Search</p>
         </a>
       </div>
     </footer>

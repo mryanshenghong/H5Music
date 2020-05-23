@@ -48,7 +48,8 @@ function shouCurrentTime() {
   var tik = this.currentTime
   let ratio = tik / duration
   let totalWidth = getClass('progress-bar').clientWidth
-  getClass('bar-control').style.left = totalWidth * ratio - 5 + 'px'
+  // 改动
+  getClass('bar-control').style.left = totalWidth * ratio - 12.5 + 'px'
   var current_m = parseInt(tik / 60)
   var current_s = parseInt(tik % 60)
   document.getElementById('currentTime').innerText = current_m + ':' + (current_s < 10 ? '0' + current_s : current_s)
@@ -185,4 +186,63 @@ getId('player-min').ontouchmove = function (e) {
   }
   this.style.top = top + 'px'
   this.style.left = left + 'px'
+}
+
+function moveProgressBar(e) {
+  const barControl = getClass('bar-control')
+  const progressBar = getClass('progress-bar')
+  const barWidth = progressBar.clientWidth
+  let left = 0
+  left = barControl.offsetLeft + e.layerX
+
+  if (left < 0) {
+    barControl.style.left = -12.5 + 'px'
+  } else if (left > barWidth - 12.5) {
+    barControl.style.left = barWidth - 12.5 + 'px'
+  } else {
+    barControl.style.left = left + 'px'
+  }
+
+  let duration = player.duration
+  let percentage = left / barWidth
+  let current_m = parseInt((percentage * duration) / 60)
+  let current_s = parseInt((percentage * duration) % 60)
+  document.getElementById('currentTime').innerText = current_m + ':' + (current_s < 10 ? '0' + current_s : current_s)
+  player.currentTime = percentage * duration
+}
+
+getClass('bar-control').ontouchmove = function (e) {
+  const progressBar = getClass('progress-bar')
+  const barWidth = progressBar.clientWidth
+  let left = 0
+
+  if (e.touches[0].clientX - 30 <= 0) {
+    left = -12.5
+    this.style.left = left + 'px'
+  } else if (e.touches[0].clientX >= barWidth + 30) {
+    this.style.right = -12.5 + 'px'
+  } else {
+    left = e.touches[0].clientX - 30
+    this.style.left = left + 'px'
+  }
+
+  playState(false)
+  player.pause()
+}
+
+getClass('bar-control').ontouchend = function (e) {
+  const progressBar = getClass('progress-bar')
+  const barWidth = progressBar.clientWidth
+  let duration = player.duration
+
+  let percentage = (this.offsetLeft + 12.5) / barWidth
+
+  if (percentage > 1) percentage = 0.999999
+
+  let current_m = parseInt((percentage * duration) / 60)
+  let current_s = parseInt((percentage * duration) % 60)
+  document.getElementById('currentTime').innerText = current_m + ':' + (current_s < 10 ? '0' + current_s : current_s)
+  player.currentTime = percentage * duration
+  playState(true)
+  player.play()
 }
