@@ -7,11 +7,11 @@ function renderAvatar() {
   template = `
     <div class="avatar-wapper">
         <img class="avatar-img-large" src="./img/avatar.jpg" alt="" />
-        </div>
+     </div>
             <div id="avatar-detail">
-            <div class="title">User Name:</div>
-            <div class="user-name">${username} <button class="avatar-btn" onclick="showUserInput()")>Change your name</button></div>
-        </div>
+              <div class="title">User Name:</div>
+              <div class="user-name">${username} <button class="avatar-btn" onclick="showUserInput()")>Change your name</button></div>
+            </div>
         ${
           isUserNameInputShow
             ? `<input
@@ -26,11 +26,11 @@ function renderAvatar() {
         <div id="music">
             <div class="title">Your Music:</div>
             <div class="view-music-btn-wrapper">
-            <button class="avatar-btn" onclick="showCurrentPage('allTracks')">View all your ${
-              allTracks.length
-            } music</button>
+              <button class="avatar-btn" onclick="showCurrentPage('allTracks')">View all your ${
+                allTracks.length
+              } music</button>
+            </div>
         </div>
-    </div>
 `
 
   avatarWrapper.innerHTML = template
